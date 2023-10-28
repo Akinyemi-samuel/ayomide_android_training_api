@@ -69,6 +69,7 @@ public class TeacherService {
                     .id(u.getId())
                     .role(u.getRole())
                     .firstName(u.getFirstName())
+                    .level(u.getLevel())
                     .lastName(u.getLastName())
                     .email(u.getEmail())
                     .password(u.getPassword())

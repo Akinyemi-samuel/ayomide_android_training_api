@@ -80,4 +80,14 @@ public class Teacher {
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
+
+    public Teacher(String firstName, String lastName,String email, Role role, Level level, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.role = role;
+        this.level = level;
+
+        this.password = password;
+    }
 }

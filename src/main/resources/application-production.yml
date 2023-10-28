@@ -4,19 +4,17 @@ server:
     context-path: /api/v1
 
 spring:
-  profiles:
-    active: production
   application:
     name: ayomide-api
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ecommerceapp
-    password: ecommerceapp
-    url: jdbc:mysql://localhost:3306/training
+    username: root
+    password: c4G-234CCc1DEbbFE23E4c3cBD-e26dC
+    url: jdbc:mysql://viaduct.proxy.rlwy.net:22557/railway
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
 

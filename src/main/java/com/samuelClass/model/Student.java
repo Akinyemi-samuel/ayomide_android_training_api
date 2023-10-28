@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import java.util.Set;
+
 @Builder
 @Getter
 @Setter
@@ -36,6 +39,14 @@ public class Student {
 
     @Enumerated(EnumType.STRING)
     private Level level;
+
+    @ManyToMany
+    @JoinTable(
+            name = "student_course",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private Set<Courses> courses;
 
     @ManyToOne()
     @JoinColumn(name = "teacher_id")

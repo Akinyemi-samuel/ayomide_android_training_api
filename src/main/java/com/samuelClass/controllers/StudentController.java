@@ -1,20 +1,36 @@
 package com.samuelClass.controllers;
 
+import com.samuelClass.dto.request.StudentRegDto;
+import com.samuelClass.dto.request.TeacherRegDto;
 import com.samuelClass.model.Student;
 import com.samuelClass.services.StudentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/student")
 @AllArgsConstructor
 public class StudentController {
 
     private final StudentService studentService;
+
+    @Operation(
+            summary = "Create a new Student"
+    )
+    @ApiResponse(responseCode = "201", description = "created Student")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public String StudentRegistration(@RequestBody StudentRegDto studentRegDto){
+        log.info("TeacherController registers teachers: {}", studentRegDto.email());
+        return studentService.StudentRegistration(studentRegDto);
+    }
 
     @GetMapping
     public List<Student> getAllStudent(){
