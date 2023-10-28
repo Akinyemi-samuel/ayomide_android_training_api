@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+spring:
+  application:
+    name: ayomide-api
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ecommerceapp
+    password: ecommerceapp
+    url: jdbc:mysql://localhost:3306/training
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
