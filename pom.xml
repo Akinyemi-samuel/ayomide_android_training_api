@@ -9,12 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.samuelClass</groupId>
-	<artifactId>ayomide_android_api</artifactId>
+	<artifactId>ayomide-android-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ayomide_android_api</name>
+	<name>ayomide-android-api</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
