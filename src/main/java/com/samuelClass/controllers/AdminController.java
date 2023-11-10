@@ -3,6 +3,7 @@ package com.samuelClass.controllers;
 import com.samuelClass.dto.request.AuthenticationDto;
 import com.samuelClass.dto.request.RegistrationDto;
 import com.samuelClass.dto.response.AuthenticationResponse;
+import com.samuelClass.model.Admin;
 import com.samuelClass.services.AdminService;
 import com.samuelClass.services.TeacherService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,6 +12,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -58,7 +61,7 @@ public class AdminController {
     @ApiResponse(responseCode = "200", description = "get all Admin")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("")
-    public void getAdmin(){
-        adminService.getAdmin();
+    public List<Admin> getAdmin(){
+        return adminService.getAdmin();
     }
 }
