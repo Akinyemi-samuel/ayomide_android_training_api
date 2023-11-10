@@ -1,5 +1,6 @@
 package com.samuelClass.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -30,6 +31,7 @@ public class Courses {
     @Column(name = "course_Name")
     private String courseName;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "courses")
     private Set<Student> students;
 
