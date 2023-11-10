@@ -1,5 +1,6 @@
 package com.samuelClass.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -46,6 +47,7 @@ public class Admin {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @JsonIgnore
     @Column(name = "password")
     private String password;
 }

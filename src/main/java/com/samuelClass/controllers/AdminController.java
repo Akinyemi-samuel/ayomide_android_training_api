@@ -51,4 +51,14 @@ public class AdminController {
     public void deleteAdmin(@PathVariable Long id){
          adminService.deleteAdmin(id);
     }
+
+    @Operation(
+            summary = "get all Admin"
+    )
+    @ApiResponse(responseCode = "200", description = "get all Admin")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("")
+    public void getAdmin(){
+        adminService.getAdmin();
+    }
 }
