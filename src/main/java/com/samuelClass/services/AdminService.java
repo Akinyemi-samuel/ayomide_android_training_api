@@ -83,4 +83,9 @@ public class AdminService {
 
     }
 
+
+    public void deleteAdmin(long id){
+        adminRepository.deleteById(id);
+    }
+
 }

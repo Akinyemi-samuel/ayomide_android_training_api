@@ -41,4 +41,14 @@ public class AdminController {
     public AuthenticationResponse userAuthentication(@RequestBody AuthenticationDto authenticationDto){
         return adminService.login(authenticationDto);
     }
+
+    @Operation(
+            summary = "delete an Admin"
+    )
+    @ApiResponse(responseCode = "200", description = "delete an Admin")
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/{id}")
+    public void deleteAdmin(@PathVariable Long id){
+         adminService.deleteAdmin(id);
+    }
 }
