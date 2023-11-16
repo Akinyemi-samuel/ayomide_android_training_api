@@ -10,8 +10,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: f4A2bAFhD-gg6dcebBbFEBh-6G3hf-F2
-    url: jdbc:mysql://monorail.proxy.rlwy.net:38311/railway
+    password: 3Cf3Hh31h2CHF5E1F1f43Gg4aD2Dhca3
+    url: jdbc:mysql://monorail.proxy.rlwy.net:49323/railway
   jpa:
     hibernate:
       ddl-auto: create
