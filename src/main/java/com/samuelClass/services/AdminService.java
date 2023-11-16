@@ -92,4 +92,10 @@ public class AdminService {
     public List<Admin> getAdmin(){
         return adminRepository.findAll();
     }
+
+
+    public Admin findUserByUserName(String userName) {
+        Optional<Admin> optional = adminRepository.findByEmail(userName);
+        return optional.orElseThrow(()-> new ApiException ("User not found", HttpStatus.NOT_FOUND));
+    }
 }
