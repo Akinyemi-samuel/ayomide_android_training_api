@@ -23,6 +23,7 @@ import java.util.List;
 public class AuthenticationDto implements UserDetails {
 
     private final String email;
+
     private final String password;
 
     @JsonIgnore
@@ -36,7 +37,6 @@ public class AuthenticationDto implements UserDetails {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    @JsonIgnore
     @Override
     public String getPassword() {
         return password;
