@@ -35,7 +35,7 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public String userRegistration(@RequestBody RegistrationDto registrationDto) {
-        log.info("TeacherController registers teachers: {}", registrationDto.email());
+        log.info("TeacherController registers teachers: {}", registrationDto.email);
         return adminService.UserRegistration(registrationDto);
     }
 
