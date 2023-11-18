@@ -60,23 +60,23 @@ public class AdminService {
 
     public String UserRegistration(RegistrationDto registrationDto) {
 
-        if (!isEmailValid.test(registrationDto.email()))
+        if (!isEmailValid.test(registrationDto.email))
             throw new ApiException("Invalid Email Found", HttpStatus.NOT_ACCEPTABLE);
 
-        if (!isPasswordValid.test(registrationDto.password()))
+        if (!isPasswordValid.test(registrationDto.password))
             throw new ApiException("Password is Invalid", HttpStatus.NOT_ACCEPTABLE);
 
-        Optional<Admin> userOptional = adminRepository.findByEmail(registrationDto.email());
+        Optional<Admin> userOptional = adminRepository.findByEmail(registrationDto.email);
         if (userOptional.isPresent()) {
             throw new ApiException("User Already Exists", HttpStatus.NOT_FOUND);
         }
 
         Admin teacher = Admin.builder()
-                .firstName(registrationDto.firstName())
-                .lastName(registrationDto.lastName())
+                .firstName(registrationDto.firstName)
+                .lastName(registrationDto.lastName)
                 .role(Role.valueOf("ADMIN"))
-                .email(registrationDto.email())
-                .password(passwordEncoder.encode(registrationDto.password()) )
+                .email(registrationDto.email)
+                .password(passwordEncoder.encode(registrationDto.password) )
                 .build();
 
         adminRepository.save(teacher);
