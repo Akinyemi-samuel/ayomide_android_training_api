@@ -74,7 +74,7 @@ public class AdminService {
         Admin teacher = Admin.builder()
                 .firstName(registrationDto.firstName())
                 .lastName(registrationDto.lastName())
-                .role(Role.valueOf(registrationDto.role()))
+                .role(Role.valueOf("ADMIN"))
                 .email(registrationDto.email())
                 .password(passwordEncoder.encode(registrationDto.password()) )
                 .build();
