@@ -58,7 +58,7 @@ public class AdminService {
     }
 
 
-    public String UserRegistration(RegistrationDto registrationDto) {
+    public AuthenticationResponse UserRegistration(RegistrationDto registrationDto) {
 
         if (!isEmailValid.test(registrationDto.email))
             throw new ApiException("Invalid Email Found", HttpStatus.NOT_ACCEPTABLE);
@@ -80,7 +80,9 @@ public class AdminService {
                 .build();
 
         adminRepository.save(teacher);
-        return "Registration successful!";
+        return AuthenticationResponse.builder()
+                .token("Registration successful!")
+                .build();
 
     }
 
