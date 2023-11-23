@@ -32,18 +32,26 @@ public class StudentController {
         return studentService.StudentRegistration(studentRegDto);
     }
 
+    @Operation(
+            summary = "get All Registered student"
+    )
     @GetMapping
     public List<Student> getAllStudent(){
         return studentService.getAllStudent();
     }
 
+    @Operation(
+            summary = "get student by id"
+    )
     @GetMapping("/{id}")
     public Student getStudentbyId(@PathVariable Long id){
         return studentService.getStudentById(id);
     }
 
-
-    @GetMapping("/{level}")
+    @Operation(
+            summary = "get students by class"
+    )
+    @GetMapping("/{level}/level")
     public List<Student> getStudentbyLevel(@PathVariable String level){
         return studentService.getStudentByLevel(level);
     }
