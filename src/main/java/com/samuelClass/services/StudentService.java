@@ -56,4 +56,8 @@ public class StudentService {
     public Student getStudentById(Long id) {
         return studentRepository.findById(id).orElseThrow(() -> new ApiException("Student Does Not Exists", HttpStatus.NOT_FOUND));
     }
+
+    public List<Student> getStudentByLevel(String level) {
+        return studentRepository.findByLevel(level).orElseThrow(() -> new ApiException("Student Does Not Exists", HttpStatus.NOT_FOUND));
+    }
 }

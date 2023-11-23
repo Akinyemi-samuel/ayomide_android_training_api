@@ -43,4 +43,10 @@ public class StudentController {
     }
 
 
+    @GetMapping("/{level}")
+    public List<Student> getStudentbyLevel(@PathVariable String level){
+        return studentService.getStudentByLevel(level);
+    }
+
+
 }

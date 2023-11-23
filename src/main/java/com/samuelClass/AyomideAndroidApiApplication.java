@@ -38,19 +38,20 @@ public class AyomideAndroidApiApplication implements CommandLineRunner {
                 new Teacher("Samuel", "Akinyemi", "samuel@gmail.com", Role.TEACHER, Level.JSS1, "samuel"),
                 new Teacher("Joseph", "Akinyemi", "joseph@gmail.com", Role.TEACHER, Level.JSS1, "samuel"),
                 new Teacher("Grace", "Ayomide", "grace@gmail.com", Role.TEACHER, Level.JSS1, "samuel")
-                );
+        );
 
-        for(Teacher t : teacherRegDtoList){
+        for (Teacher t : teacherRegDtoList) {
             teacherRepository.save(t);
         }
 
         List<StudentRegDto> studentRegDtoList = List.of(
                 new StudentRegDto("Samuel", "Akinyemi", "samuel@gmail.com", "JSS1", teacherRegDtoList.get(0)),
                 new StudentRegDto("Joseph", "Akinyemi", "joseph@gmail.com", "JSS1", teacherRegDtoList.get(0)),
-                new StudentRegDto("Grace", "Ayomide", "grace@gmail.com", "JSS2", teacherRegDtoList.get(1))
+                new StudentRegDto("Mary", "magdalin", "mary@gmail.com", "JSS2", teacherRegDtoList.get(1)),
+                new StudentRegDto("John", "okafor", "john@gmail.com", "JSS3", teacherRegDtoList.get(1))
         );
 
-        for(StudentRegDto t : studentRegDtoList){
+        for (StudentRegDto t : studentRegDtoList) {
             studentService.StudentRegistration(t);
         }
 
@@ -65,7 +66,7 @@ public class AyomideAndroidApiApplication implements CommandLineRunner {
                 new CourseDto("Basic Information"),
                 new CourseDto("Literature")
         );
-        for(CourseDto t : courseDtos){
+        for (CourseDto t : courseDtos) {
             courseService.AddCourse(t);
         }
 
