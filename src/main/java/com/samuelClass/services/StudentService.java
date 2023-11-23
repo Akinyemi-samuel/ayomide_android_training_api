@@ -49,7 +49,11 @@ public class StudentService {
 
     }
 
-    public List<Student> getAllStudent(){
+    public List<Student> getAllStudent() {
         return studentRepository.findAll();
+    }
+
+    public Student getStudentById(Long id) {
+        return studentRepository.findById(id).orElseThrow(() -> new ApiException("Student Does Not Exists", HttpStatus.NOT_FOUND));
     }
 }
