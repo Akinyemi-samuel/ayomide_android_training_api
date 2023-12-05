@@ -83,6 +83,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>ayomide-api-training</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
