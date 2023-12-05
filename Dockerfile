@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM eclipse-temurin:17-jdk-alpine
 LABEL maintainer="{akinyemisamuelayo@gmail.com} samuel"
 VOLUME /tmp
 COPY target/*.jar app.jar
