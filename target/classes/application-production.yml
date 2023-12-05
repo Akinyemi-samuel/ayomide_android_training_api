@@ -9,9 +9,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: chAf-bf35fbf3D4gB3hBH465-eg5ec61
-    url: jdbc:mysql://monorail.proxy.rlwy.net:23614/railway
+    username: uukh91pa2g4inxxn
+    password: QHbJ1968jRSGyuK7qdEh
+    url: jdbc:mysql://b6hzx1kc9jcd3lzhy5b9-mysql.services.clever-cloud.com/b6hzx1kc9jcd3lzhy5b9
   jpa:
     hibernate:
       ddl-auto: create
