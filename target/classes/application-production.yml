@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+spring:
+  application:
+    name: ayomide-api
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: chAf-bf35fbf3D4gB3hBH465-eg5ec61
+    url: jdbc:mysql://monorail.proxy.rlwy.net:23614/railway
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
