@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.samuelClass.AyomideAndroidApiApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 57.338 s - in com.samuelClass.AyomideAndroidApiApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 50.144 s - in com.samuelClass.AyomideAndroidApiApplicationTests

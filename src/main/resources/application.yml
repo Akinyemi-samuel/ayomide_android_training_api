@@ -5,7 +5,7 @@ server:
 
 spring:
   profiles:
-    active: default
+    active: production
   application:
     name: ayomide-api
 
