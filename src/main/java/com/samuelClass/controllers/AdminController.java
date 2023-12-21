@@ -8,6 +8,7 @@ import com.samuelClass.services.AdminService;
 import io.jsonwebtoken.MalformedJwtException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin")
 @AllArgsConstructor
+@Tag(name = "Admin")
 public class AdminController {
 
     private final AdminService adminService;

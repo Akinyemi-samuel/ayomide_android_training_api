@@ -1,13 +1,11 @@
 package com.samuelClass.controllers;
 
-import com.samuelClass.dto.request.AuthenticationDto;
-import com.samuelClass.dto.request.RegistrationDto;
 import com.samuelClass.dto.request.TeacherRegDto;
-import com.samuelClass.dto.response.AuthenticationResponse;
 import com.samuelClass.model.Teacher;
 import com.samuelClass.services.TeacherService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/teacher")
 @AllArgsConstructor
+@Tag(name = "Teacher")
 public class TeacherController {
 
     private final TeacherService teacherService;
@@ -39,7 +38,7 @@ public class TeacherController {
     )
     @ApiResponse(responseCode = "200", description = "get all teachers with their corresponding students")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/withStudent")
+    @GetMapping("/student")
     public List<Teacher> getAllTeachersWithStudent() {
         return teacherService.getAllTeachersWithStudent();
     }

@@ -5,6 +5,7 @@ import com.samuelClass.model.Courses;
 import com.samuelClass.services.CourseService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("course")
 @RequiredArgsConstructor
+@Tag(name = "Course")
 public class CourseController {
 
     private final CourseService courseService;
