@@ -6,6 +6,7 @@ import com.samuelClass.model.Student;
 import com.samuelClass.services.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/student")
 @AllArgsConstructor
+@Tag(name = "Student")
 public class StudentController {
 
     private final StudentService studentService;
@@ -51,7 +53,7 @@ public class StudentController {
     @Operation(
             summary = "get students by class"
     )
-    @GetMapping("/{level}/level")
+    @GetMapping("/{level}")
     public List<Student> getStudentbyLevel(@PathVariable String level){
         return studentService.getStudentByLevel(level);
     }
