@@ -1,6 +1,7 @@
 package com.samuelClass.controllers;
 
 import com.samuelClass.dto.request.AuthenticationDto;
+import com.samuelClass.dto.request.ChangePasswordRequest;
 import com.samuelClass.dto.request.RegistrationDto;
 import com.samuelClass.dto.response.AuthenticationResponse;
 import com.samuelClass.model.Admin;
@@ -14,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -37,7 +39,7 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public AuthenticationResponse userRegistration(@RequestBody RegistrationDto registrationDto) {
-        log.info("TeacherController registers teachers: {}", registrationDto.email);
+        log.info("AdminController registers Admin: {}", registrationDto.email);
         return adminService.UserRegistration(registrationDto);
     }
 
@@ -49,6 +51,7 @@ public class AdminController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/login")
     public AuthenticationResponse userAuthentication(@RequestBody AuthenticationDto authenticationDto) {
+        log.info("AdminController authenticates Admin: {}", authenticationDto.getEmail());
         return adminService.login(authenticationDto);
     }
 
@@ -60,6 +63,7 @@ public class AdminController {
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/{id}")
     public void deleteAdmin(@PathVariable Long id) {
+        log.info("AdminController deletes Admin record: {}", id);
         adminService.deleteAdmin(id);
     }
 
@@ -72,12 +76,13 @@ public class AdminController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("")
     public List<Admin> getAdmin() {
+        log.info("AdminController gets all Admin: {}");
         return adminService.getAdmin();
     }
 
 
     @GetMapping("/userdetails")
-    public ResponseEntity<Admin> getUserDetailsByToken(HttpServletRequest request) {
+    public ResponseEntity<Admin> getUserDetailsByToken() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if ((authentication == null || !authentication.isAuthenticated())) {
             throw new MalformedJwtException("User is not authenticated");
@@ -86,6 +91,19 @@ public class AdminController {
             String username = userDetails.getUsername();
             return ResponseEntity.status(HttpStatus.OK).body(adminService.findUserByUserName(username));
         }
+    }
+
+
+    @Operation(
+            summary = "Change Admin Password"
+    )
+    @ApiResponse(responseCode = "200", description = "Admin Password updated")
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/change-password")
+    public ResponseEntity<String> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest) {
+        log.info("AdminController updates Admin details: {}");
+        return adminService.updateAdminPassword(changePasswordRequest);
+
     }
 
 }

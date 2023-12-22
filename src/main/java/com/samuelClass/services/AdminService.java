@@ -2,6 +2,7 @@ package com.samuelClass.services;
 
 import com.samuelClass.config.JwtService;
 import com.samuelClass.dto.request.AuthenticationDto;
+import com.samuelClass.dto.request.ChangePasswordRequest;
 import com.samuelClass.dto.request.RegistrationDto;
 import com.samuelClass.dto.response.AuthenticationResponse;
 import com.samuelClass.exception.ApiException;
@@ -12,9 +13,11 @@ import com.samuelClass.repository.AdminRepository;
 import com.samuelClass.repository.TeacherRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +47,7 @@ public class AdminService {
 
         if (!authentication.isAuthenticated()) throw new ApiException("Invalid Credentials", HttpStatus.UNAUTHORIZED);
         else {
+            // if user is authenticated, return a json web token
             AuthenticationDto authenticationDto1 = adminRepository.findByEmail(authenticationDto.getEmail()).map(u -> AuthenticationDto.builder()
                     .email(u.getEmail())
                     .password(u.getPassword())
@@ -83,6 +87,43 @@ public class AdminService {
         return AuthenticationResponse.builder()
                 .token("Registration successful!")
                 .build();
+
+    }
+
+
+    public ResponseEntity<String> updateAdminPassword(ChangePasswordRequest changePasswordRequest){
+
+        // Get the currently logged-in user
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.badRequest().body("User not authenticated");
+        }
+
+
+        // Authenticate the user with the provided old password
+        String username = authentication.getName();
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, changePasswordRequest.getOldPassword());
+        authenticationManager.authenticate(authenticationToken);
+
+        // If authentication successful, update the password
+        if (authenticationToken.isAuthenticated()) {
+            // Fetch user by username
+            Admin admin = findUserByUserName(username);
+
+            if (admin != null) {
+                String newPassword = passwordEncoder.encode(changePasswordRequest.getNewPassword());
+                admin.setPassword(newPassword);
+
+                // Save the updated user with the new password
+                adminRepository.save(admin);
+                return ResponseEntity.ok("Password updated successfully");
+            } else {
+                return ResponseEntity.badRequest().body("User not found");
+            }
+        } else {
+            return ResponseEntity.badRequest().body("Old password is incorrect");
+        }
 
     }
 
