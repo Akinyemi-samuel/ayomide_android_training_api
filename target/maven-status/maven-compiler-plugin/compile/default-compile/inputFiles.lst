@@ -16,6 +16,7 @@ C:\Users\samfr\Documents\ayomide-android-api\src\main\java\com\samuelClass\repos
 C:\Users\samfr\Documents\ayomide-android-api\src\main\java\com\samuelClass\config\WebSecurityConfig.java
 C:\Users\samfr\Documents\ayomide-android-api\src\main\java\com\samuelClass\dto\request\CourseDto.java
 C:\Users\samfr\Documents\ayomide-android-api\src\main\java\com\samuelClass\repository\StudentRepository.java
+C:\Users\samfr\Documents\ayomide-android-api\src\main\java\com\samuelClass\dto\request\ChangePasswordRequest.java
 C:\Users\samfr\Documents\ayomide-android-api\src\main\java\com\samuelClass\model\Courses.java
 C:\Users\samfr\Documents\ayomide-android-api\src\main\java\com\samuelClass\services\CourseService.java
 C:\Users\samfr\Documents\ayomide-android-api\src\main\java\com\samuelClass\controllers\AdminController.java
