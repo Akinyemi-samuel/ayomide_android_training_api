@@ -54,4 +54,16 @@ public class TeacherController {
         return teacherService.getAllTeachers();
     }
 
+
+    @Operation(
+            summary = "DELETE TEACHER BY ID"
+    )
+    @ApiResponse(responseCode = "201", description ="Teacher has been successfully deleted from the list of teachers\"")
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("{id}")
+    public String deleteTeacher(@PathVariable(name = "id") Long id) {
+        log.info("TeacherController deleted a teacher: {}", id);
+        return teacherService.deleteTeacher(id);
+
+    }
 }

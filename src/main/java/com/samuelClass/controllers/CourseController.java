@@ -44,4 +44,19 @@ public class CourseController {
        return courseService.AddCourse(courseDto);
 
     }
+
+
+    @Operation(
+            summary = "DELETE COURSES BY ID"
+    )
+    @ApiResponse(responseCode = "201", description ="courseDto.courseName()+ \" has been successfully deleted from the list of courses\"")
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("{id}")
+    public String deleteCourse(@PathVariable(name = "id") Long id) {
+        log.info("CourseController deleted a course: {}", id);
+        return courseService.deleteCourse(id);
+
+    }
+
+
 }

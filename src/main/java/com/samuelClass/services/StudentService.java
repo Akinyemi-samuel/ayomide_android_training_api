@@ -9,6 +9,7 @@ import com.samuelClass.model.Student;
 import com.samuelClass.model.Teacher;
 import com.samuelClass.repository.StudentRepository;
 import com.samuelClass.repository.TeacherRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -59,5 +60,11 @@ public class StudentService {
 
     public List<Student> getStudentByLevel(String level) {
         return studentRepository.findByLevel(Level.valueOf(level)).orElseThrow(() -> new ApiException("Student Does Not Exists", HttpStatus.NOT_FOUND));
+    }
+
+    @Transactional
+    public String deleteStudent(Long id) {
+        studentRepository.deleteById(id);
+        return "student " + id + " has been successfully deleted from the list of students";
     }
 }

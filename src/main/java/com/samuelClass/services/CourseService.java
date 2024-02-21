@@ -3,6 +3,7 @@ package com.samuelClass.services;
 import com.samuelClass.dto.request.CourseDto;
 import com.samuelClass.model.Courses;
 import com.samuelClass.repository.CoursesRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,11 @@ public class CourseService {
 
         coursesRepository.save(course);
         return courseDto.courseName()+ " has been successfully added to the list of courses";
+    }
+
+    @Transactional
+    public String deleteCourse(Long courseId){
+        coursesRepository.deleteById(courseId);
+        return "course has been successfully deleted from the list of courses";
     }
 }

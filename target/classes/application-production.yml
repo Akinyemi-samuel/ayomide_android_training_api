@@ -22,3 +22,9 @@ management:
   tracing:
     sampling:
       probability: 1.0
+
+springdoc:
+  swagger-ui:
+    tryItOutEnabled: true
+
+  packages-to-scan: com.samuelClass.controllers

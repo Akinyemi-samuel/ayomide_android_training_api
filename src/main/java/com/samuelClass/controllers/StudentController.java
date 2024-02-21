@@ -59,4 +59,17 @@ public class StudentController {
     }
 
 
+    @Operation(
+            summary = "DELETE STUDENT BY ID"
+    )
+    @ApiResponse(responseCode = "201", description ="student has been successfully deleted from the list of student")
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("{id}")
+    public String deleteStudent(@PathVariable(name = "id") Long id) {
+        log.info("StudentController deleted a student: {}", id);
+        return studentService.deleteStudent(id);
+
+    }
+
+
 }

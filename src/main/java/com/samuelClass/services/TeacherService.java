@@ -10,6 +10,7 @@ import com.samuelClass.model.Level;
 import com.samuelClass.model.Role;
 import com.samuelClass.model.Teacher;
 import com.samuelClass.repository.TeacherRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -78,5 +79,9 @@ public class TeacherService {
     }
 
 
-
+    @Transactional
+    public String deleteTeacher(Long courseId){
+        teacherRepository.deleteById(courseId);
+        return "teacher has been successfully deleted from the list of teachers";
+    }
 }

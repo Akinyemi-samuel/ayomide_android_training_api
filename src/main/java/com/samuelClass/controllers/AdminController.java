@@ -81,6 +81,10 @@ public class AdminController {
     }
 
 
+    @Operation(
+            summary = "Get User Details"
+    )
+    @ApiResponse(responseCode = "200", description = "Get User Details")
     @GetMapping("/userdetails")
     public ResponseEntity<Admin> getUserDetailsByToken() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
